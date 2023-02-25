@@ -2,7 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 dotenv.config()
 const PORT = process.env.PORT || '3000'
-const DATABASE_URL = 'mongodb+srv://naman:nmnjay@cluster1.siszk7a.mongodb.net/?retryWrites=true&w=majority'
+const DATABASE_URL = process.env.DATABASE_URL
 import web from './routes/web.js'
 import connectDB from './db/mongoconnectin.js'
 const app = express()
