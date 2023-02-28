@@ -26,8 +26,9 @@ class studentController{
     }
 
     static getSingleData = async (req,res)=>{
+        const {d} = req.param
         try {
-            const r = await studentModel.findById(req.params.id)
+            const r = await studentModel.findOne(d)
             res.send(r)
         } catch (error) {
             console.log(error)
@@ -35,8 +36,10 @@ class studentController{
     }
 
     static updateDoc = async (req,res)=>{
+        const {d} = req.param
         try {
-            const r = await studentModel.findByIdAndUpdate(req.params.id, req.body, {returnDocument:'after'})
+            // const r = await studentModel.findByIdAndUpdate(req.params.id, req.body, {returnDocument:'after'})
+            const r = await studentModel.findOneAndUpdate(d, req.body, {returnDocument:'after'})
             res.send(r)
         } catch (error) {
             console.log(error)
@@ -45,8 +48,9 @@ class studentController{
     }
 
     static deleteDoc = async (req,res)=>{
+        const {d} = req.param
         try {
-            const r = await studentModel.findByIdAndDelete(req.params.id)
+            const r = await studentModel.findOneAndDelete(d)
             res.status(204).send(r)
         } catch (error) {
             console.log(error)
